@@ -291,124 +291,158 @@ ls -lai > outputfile
 --------------
 PIPE
 
-- A Saída vai para o arquivo file1(Recriando - caso ja exista ele sobreescreve) e o erro caso ocorra vai para o terminal
+- A Saída vai para o arquivo file1(Recriando - caso ja exista ele sobreescreve) e o erro caso ocorra vai para o terminal<br>
+```
 comando > file1
-
-- A Saída vai para o arquivo file1(Append - Adicionando no final do arquivo) e o erro caso ocorra vai para o terminal
+```
+- A Saída vai para o arquivo file1(Append - Adicionando no final do arquivo) e o erro caso ocorra vai para o terminal<br>
+```
 comando >> file1
-
-- A saída vai para o terminal e o erro vai para o file1(Recriando - caso ja exista ele sobreescreve)
+```
+- A saída vai para o terminal e o erro vai para o file1(Recriando - caso ja exista ele sobreescreve)<br>
+```
 comando 2> file1
-
-- A saída vai para o terminal e o erro vai para o lixo(null)
+```
+- A saída vai para o terminal e o erro vai para o lixo(null)<br>
+```
 comando 2> /dev/null
+```
 
-- A saida e o erro vai para o mesmo arquivo file1(Recriando - caso ja exista ele sobreescreve)
+- A saida e o erro vai para o mesmo arquivo file1(Recriando - caso ja exista ele sobreescreve)<br>
+```
 comando > file1 2>&1 
 comando &> file1
-
-- A saida e o erro vai para o mesmo arquivo file1(Append - Adicionando no final do arquivo)
+```
+- A saida e o erro vai para o mesmo arquivo file1(Append - Adicionando no final do arquivo)<br>
+```
 comando >> file1 2>&1
 comando &>> file1
-
-- A saida e os erros vai para o terminal e para o arquivo file1 ao mesmo tempo
+```
+- A saida e os erros vai para o terminal e para o arquivo file1 ao mesmo tempo<br>
+```
 comando | tee file1
-
+```
 
 -------------------------------------------
-- Listar as variaveis do ambiente
+- Listar as variaveis do ambiente<br>
+```
 env
-
-- Setando Variaveis automaticamente
+```
+- Setando Variaveis automaticamente<br>
+```
 ~/.bashrc
+```
 
-- Retirando variaveis
+- Retirando variaveis<br>
+```
 unset nomedavariavel
-
-- Retirar variavel sem desconfigurar
+```
+- Retirar variavel sem desconfigurar<br>
+```
 export -n nomedavariavel
+```
 
-
-- Informacoes do user atual
+- Informacoes do user atual<br>
+```
 id
-
-- Informacoes do user02
+```
+- Informacoes do user02<br>
+```
 id user02
-
-- Mostra o dono (-l) do arquivo ou diretorio
+```
+- Mostra o dono (-l) do arquivo ou diretorio<br>
+```
 ls -ld dir1
 ls -l file1
-
-- Lista todos os processos atuais mostrando os responsaveis por cada processo
+```
+- Lista todos os processos atuais mostrando os responsaveis por cada processo<br>
+```
 ps -au
-
-- Troca de usuario ou para superusuario
+```
+- Troca de usuario ou para superusuario<br>
+```
 su 
 su -
 su - user02
-
-- Bloqueia e Desbloqueio a senha do user02 colocando um ! no password
+```
+- Bloqueia e Desbloqueio a senha do user02 colocando um ! no password<br>
+```
 sudo usermod -L user02
 sudo usermod -U user02
+```
+- logs são salvos em /var/log/secure<br>
 
-- logs são salvos em /var/log/secure
-
--
+-<br>
+```
 sudo -i
-
-- Configurando o acesso ao comando sudo
+```
+- Configurando o acesso ao comando sudo<br>
+```
 /etc/sudoers.d/nomedousuario
 
 user01 ALL=(ALL) ALL
 %group01 ALL=(ALL) ALL
 user03 ALL=(ALL) NOPASSWD:ALL
+```
+- O comando su - seta root exatamento como um login normal ignorando configurações de ambiente feitas pelo sudo.<br>
 
-- O comando su - seta root exatamento como um login normal ignorando configurações de ambiente feitas pelo sudo.
 
 
-
-- Apaga o usuario, o segundo apaga o usuario e sua home
+- Apaga o usuario, o segundo apaga o usuario e sua home<br>
+```
 userdel nomeusuario
 userdel -r nomeusuario
-
-- Encontrar todos os arquivos e diretorios nao proprietarios
+```
+- Encontrar todos os arquivos e diretorios nao proprietarios<br>
+```
 find / -nouser -o -nongroup
-
-- (-g) GID
+```
+- (-g) GID<br>
+```
 sudo groupadd -g 10001 group01
+```
 
-- Cria um grupo do sistema (-r)
+- Cria um grupo do sistema (-r)<br>
+```
 sudo groupadd -r group02
-
-- (-n) newname
+```
+- (-n) newname<br>
+```
 sudo groupmod -n group0022 group02
+```
 
-- (-g) novo GID
+- (-g) novo GID<br>
+```
 sudo groupmod -g 20000 group0022
 sudo groupdel group0022
-
-- Altera grupo principal
+```
+- Altera grupo principal<br>
+```
 sudo usermod -g alunos user02
-
-- Acrescenta grupo complementar
+```
+- Acrescenta grupo complementar<br>
+```
 sudo usermod -aG mestrado user02
+```
 
 
-
-- 
+- <br>
+```
 sudo chage -m 0 -M 90 -W 7 -I 14 user03
-
-- /etc/login.defs
-
-- Programar trancamento de conta/ Desabilitar interacao com o shell
+```
+- Arquivo que contem as informacoes de expiracao de senha<br>
+```
+/etc/login.defs
+```
+- Programar trancamento de conta/ Desabilitar interacao com o shell<br>
+```
 sudo usermod -L -e 2019-10-05 user03
 usermod -s /sbin/nologin user03
 // VC PODE CALCULAR DATA COM date -d "+180 days" +%F
+```
 
-- /etc/login.defs contem as informacoes de expiracao de senha
 
-
-- define recursivamente permissoes para a arvore (-R)
+- define recursivamente permissoes para a arvore (-R)<br>
 ## g group, o others, a all,+,-,=
 chmod -R g+rwX demodir
 chmod go-rw file1
