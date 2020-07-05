@@ -2,7 +2,7 @@
 
 ## Semana 1
 
-# Data completa
+Data completa
 ```
 date
 ```
