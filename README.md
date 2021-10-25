@@ -763,123 +763,172 @@ tar -xf /root/etc.tar /etc
 tar -tf /root/etc.tar /etc
 
 # Zipar e deszipar
+```
 gzip abc.tar
 bzip2 abc.tar
 xz abc.tar
 gunzip abc.tar.gz
 bunzip2 abc.tar.bz2
 unxz abc.tar.xz
+```
 
 # Utilizando os dois de uma vez
+```
 tar -czf abc.tar file1 file2 file3
 tar -cjf /root/etc.tar /etc
 tar -xJf /root/etc.tar /etc
+```
 
 # Copia segura de arquivos (origem/destino) - da pra usar varios
+```
 scp /etc/yum.conf /etc/hosts remoteuser@remotehost:/home/remoteuser
 scp remoteuser@remotehost:/etc/hostname /home/user
+```
 
 # Copiar toda a arvore
+```
 scp -r root@remoteuser:/var/log /tmp
+```
 
 # Sessao interativa para baixar e enviar arquivos remotamente
+```
 sftp remoteuser@remotehost
 mkdir hostbackup
 cd hostbackup
+//Envia o arquivo do host para o remote
 put /etc/hosts
+//Puxa um arquivo do Remote para o host
 get /etc/hosts
-
+exit
+```
 
 # Sincronizando arquivos e diretorios (a archive mode, v verbose)
+```
 rsync -av /var/log /tmp
 rsync -av /var/log remotehost:/tmp
 rsync -av remotehost:/var/log /tmp
+```
 
 #
+```
 subscription-manager register --username=yourname --password=yourpassword
 subscription-manager list --available | less
 subscription-manager attach --auto
 subscription-manager attach --pool=poolID
 subscription-manager list --consumed
 subscription-manager unregister
+```
 
 # Instalar modulos (pacotes rpm)
+```
 yum module install perl
-
+```
 
 ----------------------------------------------------- SEMANA 7
 
 
 # Mostra o espaco livre disponivel nos discos(-h pra humano ler)
+```
 df
 df -h
+```
 
 # Uso de disco da pasta (-h para leitura humana)
+```
 du /usr/share/
 du -h /usr/share/
+```
 
 # Detalhes dos blocos de todos os dispositivos
+```
 lsblk
+```
 
 # Montagem do bloco poor nome
+```
 mount /dev/vdb1 /mnt/data
+```
 
 # Detalhes do bloco com detalhes do UUID, tipo de montagem
+```
 lsblk -fp
+```
 
 # montagem por UUID
+```
 mount UUID="124s8afasgas9-12121gafeq14-215125adawd" /mnt/data
+```
 
 # desmontar uma arvore de bloco
+```
 umount /mnt/data
+```
 
 # Mostra todos os arquivos que estao abertos e em processos do diretorio desejado
+```
 lsof /mnt/data
+```
 
 
 # Atualiza o banco de dados de busca
+```
 updatedb
+```
 
 # Utiliza o banco para fazer uma busca
+```
 locate passwd
 locate image
+```
 
 # Case sensitive
+```
 locate -i messages
 locate -n 5 snow.png
+```
 
 # Busca em tempo real 
+```
 find / -name sshd_config
 find / -name '*.txt'
 find /etc -name '*pass*'
 find / -iname '*messages*'
+```
 
 # Busca baseada em dono
+```
 find -user user
 find -group user
 find -uid 1000
 find -gid 1000
 find / -user root -group mail
+```
 
 #Busca pela permissao
+```
 find /home -perm 764
 find /home -perm /442
 find -perm -002
+```
 
 # Busca por tamanho
+```
 find -size 10M
 find -size +10G
 find -size -10k
 find / -mmin 120
 find / -mmin +200
 find / -mmin -150
+```
 
 #Busca baseada por tipo
+```
 find /etc -type d
 find /etc -type f
 find /etc -type l
 find /etc -type b
 find / -type f -links +1
+```
 
 ------------------------------------------------------- CAPITULO 17
 
